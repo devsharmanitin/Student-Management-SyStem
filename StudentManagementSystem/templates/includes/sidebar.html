@@ -1,0 +1,140 @@
+{% load static %}
+{% load active_link_tags %}
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+       <div id="sidebar-menu" class="sidebar-menu">
+         {% comment %} Hod SideBAr  {% endcomment %}
+         {% if user.user_type == 'Hod' %}
+          <ul>
+             <li class="menu-title">
+                <span>Main Menu</span>
+             </li>
+             <li class = "{% active_link 'HodHome' 'active' %}">
+               <a href="{% url 'HodHome' %}"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></a>
+            </li>
+             <li class="submenu {% active_link 'StudentView' 'active' %} {% active_link 'StudentAdd' 'active' %}" >
+                <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   <li><a href="{% url 'StudentView' %}">Student View</a></li>
+                   <li><a href="{% url 'StudentAdd' %}">Student Add</a></li>
+                   
+                </ul>
+             </li>
+             <li class="submenu {% active_link 'StaffView' 'active' %} {% active_link 'StaffAdd' 'active' %}">
+                <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Staff</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   <li><a href="{% url 'StaffView' %}">View Staff </a></li>
+                   <li><a href="{% url 'StaffAdd' %}">Add Staff </a></li>
+                   
+                </ul>
+             </li>
+             <li class="submenu {% active_link 'CourseView' 'active' %}{% active_link 'CourseAdd' 'active' %}">
+                <a href="#"><i class="fa fa-graduation-cap"></i> <span> Course</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   <li><a href="{% url 'CourseView' %}">View Course </a></li>
+                   <li><a href="{% url 'CourseAdd' %}">Add Course</a></li>
+                </ul>
+             </li>
+             <li class="submenu {% active_link 'SubjectView' 'active' %}{% active_link 'SubjectAdd' 'active' %}">
+                <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
+                <ul>
+                   <li><a href="{% url 'SubjectView' %}">View Subject</a></li>
+                   <li><a href="{% url 'SubjectAdd' %}"> Add Subject</a></li>
+                   
+                </ul>
+             </li>
+             <li class="submenu {% active_link 'SessionView' 'active' %} {% active_link 'SessionAdd' 'active' %}">
+               <a href="#"><i class="fa fa-clock"></i> <span> Session</span> <span class="menu-arrow"></span></a>
+               <ul>
+                  <li><a href="{% url 'SessionView' %}">view Session </a></li>
+                  <li><a href="{% url 'SessionAdd' %}">Add Session </a></li>
+               </ul>
+            </li>
+            
+            <li class = "{% active_link 'Staff_Notifications' 'active' %}">
+               <a href="{% url 'Staff_Notifications' %}"><i class="fa fa-bell"></i> <span>Send Staff Notification</span></a>
+            </li>
+            <li class = "{% active_link 'StudentSendNotifications' 'active' %}">
+               <a href="{% url 'StudentSendNotifications' %}"><i class="fa fa-bell"></i> <span>Send Student Notification</span></a>
+            </li>
+            <li class = "{% active_link 'ViewAttendance' 'active' %}">
+               <a href="{% url 'ViewAttendance' %}"><i class="fa fa-calendar"></i> <span>View Attendence</span></a>
+            </li>
+            <li class = "{% active_link 'StaffFeedbackView' 'active' %}">
+               <a href="{% url 'StaffFeedbackView' %}"><i class="fas fa-comments"></i> <span>Staff FeedBack</span></a>
+            </li>
+            <li class = "{% active_link 'StudentFeedbackView' 'active' %}">
+               <a href="{% url 'StudentFeedbackView' %}"><i class="fas fa-comments"></i> <span>Student Feedback</span></a>
+            </li>
+            <li class = "{% active_link 'StaffLeaveView' 'active' %}">
+               <a href="{% url 'StaffLeaveView' %}"><i class="fa fa-envelope"></i> <span>Staff Leave</span></a>
+            </li>
+            <li class = "{% active_link 'StudentLeaveView' 'active' %}">
+               <a href="{% url 'StudentLeaveView' %}"><i class="fa fa-envelope"></i> <span>Student Leave</span></a>
+            </li>
+   
+          </ul>
+
+          {% comment %} Staff SideBar  {% endcomment %}
+          {% elif user.user_type == "Staff" %}
+          <ul>
+            <li class="menu-title">
+               <span>Main Menu</span>
+            </li>
+            <li class = "{% active_link 'StaffHome' 'active' %}">
+              <a href="{% url 'StaffHome' %}"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></a>
+           </li>
+           <li class = "{% active_link 'TakeAttendance' 'active' %}">
+            <a href="{% url 'TakeAttendance' %}"><i class="fas fa-calendar-alt"></i> <span>Take Attendence</span></a>
+            </li>
+           <li class = "{% active_link 'View_Attendance' 'active' %}">
+            <a href="{% url 'View_Attendance' %}"><i class="fas fa-calendar-alt"></i> <span>View Attendence</span></a>
+            </li>
+            <li class = "{% active_link 'AddResult' 'active' %}">
+               <a href="{% url 'AddResult' %}"><i class="fas fa-poll-h"></i> <span>Add Result</span></a>
+            </li>
+            <li class = "{% active_link 'StaffNotificationView' 'active' %}">
+               <a href="{% url 'StaffNotificationView' %}"><i class="fa fa-bell"></i> <span>View Notification</span></a>
+            </li>
+            <li class = "{% active_link 'StaffApplyLeave' 'active' %}">
+               <a href="{% url 'StaffApplyLeave' %}"><i class="fas fa-envelope-open"></i> <span>Apply Leave</span></a>
+            </li>
+            <li class = "{% active_link 'StaffSendFeedBack' 'active' %}">
+               <a href="{% url 'StaffSendFeedBack' %}"><i class="fas fa-comment"></i> <span>Send Feedback</span></a>
+            </li>
+            
+         </ul>
+
+         {% comment %} Student SideBar  {% endcomment %}
+          {% else %}
+
+          <ul>
+            <li class="menu-title">
+               <span>Main Menu</span>
+            </li>
+            <li class = "{% active_link 'StudentHome' 'active' %}">
+              <a href="{% url 'StudentHome' %}"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></a>
+           </li>
+           <li class = "{% active_link 'StudentViewAttendance' 'active' %}">
+            <a href="{% url 'StudentViewAttendance' %}"><i class="fas fa-calendar-alt"></i> <span>View Attendence</span></a>
+            </li>
+            <li class = "{% active_link 'StudentViewResult' 'active' %}">
+               <a href="{% url 'StudentViewResult' %}"><i class="fas fa-poll-h"></i> <span>View Result</span></a>
+            </li>
+            <li class = "{% active_link 'StudentViewNotification' 'active' %}">
+               <a href="{% url 'StudentViewNotification' %}"><i class="fa fa-bell"></i> <span>View Notification</span></a>
+            </li>
+            <li class = "{% active_link 'StudentApplyLeave' 'active' %}">
+               <a href="{% url 'StudentApplyLeave' %}"><i class="fas fa-envelope-open"></i> <span>Apply Leave</span></a>
+            </li>
+            <li class = "{% active_link 'StudentSendFeedBack' 'active' %}">
+               <a href="{% url 'StudentSendFeedBack' %}"><i class="fas fa-comment"></i> <span>Send Feedback</span></a>
+            </li>
+            
+         </ul>
+
+          {% endif %}
+
+       </div>
+    </div>
+ </div>

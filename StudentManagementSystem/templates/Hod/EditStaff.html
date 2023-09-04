@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-header">
+    <div class="row align-items-center">
+       <div class="col">
+          <h3 class="page-title">Add Staffs</h3>
+          <ul class="breadcrumb">
+             <li class="breadcrumb-item"><a href="Staffs.html">Staffs</a></li>
+             <li class="breadcrumb-item active">Edit Staffs</li>
+          </ul>
+       </div>
+    </div>
+ </div>
+ <div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-body">
+             <form method="post" enctype="multipart/form-data" action="{% url 'StaffEdit' StaffUser.id %}">
+               {% csrf_token  %}
+               {% include 'includes/messages.html' %}
+                <div class="row">
+                   <div class="col-12">
+                      <h5 class="form-title"><span>Staff Information</span></h5>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                         <label>First Name</label>
+                         <input type="text" class="form-control" value="{{StaffUser.admin.first_name}}" name="FirstName" >
+                      </div>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                         <label>Last Name</label>
+                         <input type="text" class="form-control"  value="{{StaffUser.admin.last_name}}" name="LastName" >
+                      </div>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                         <label>Staff Email</label>
+                         <input type="text" class="form-control"  value="{{StaffUser.admin.email}}" name="StaffEmail" required>
+                      </div>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                       <label>Username</label>
+                       <input type="text" class="form-control"  value="{{StaffUser.admin.username}}" name="Username" required>
+                    </div>
+                 </div>
+                 <div class="col-12 col-sm-6">
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input type="password" class="form-control" name="Password" placeholder="Update Password Using Profile" >
+                  </div>
+               </div>
+                   
+                   <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                         <label>Date of Birth</label>
+                         <div>
+                            <input type="date" class="form-control"  value="{{StaffUser.datebirth}}" name="Dob" required>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                       <label>Gender</label>
+                       <select class="form-control" name="Gender" value="{{StaffUser.gender}}" >
+                          <option vaue="">Select Gender</option>
+                          <option value="Female">Female</option>
+                          <option value="Male">Male</option>
+                          <option value="other">Others</option>
+                       </select>
+                    </div>
+                    </div>
+                   <div class="col-12 col-sm-6">
+                      <div class="form-group">
+                         <label>Staff Image</label>
+                         <input type="file" class="form-control" name="StaffImage" value{{StaffUser.admin.profile.url}} required>
+                         {{StaffUser.admin.profile.url}}
+                      </div>
+                   </div>
+                   <div class="col-12 col-sm-6">
+                    <div class="form-group">
+                       <label>Permanent Address</label>
+                       <textarea class="form-control" name="Address" required>
+                        {{StaffUser.address}}
+                       </textarea>
+                    </div>
+                 </div>
+                   <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                   </div>
+                </div>
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>
+{% endblock %}
